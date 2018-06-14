@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>敬澜山</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <link rel="stylesheet" href="dist/base.css">
+</head>
+<body>
+<div class="wrap">
+    <!--header-->
+    <div class="header clearfix">
+        <div class="logo"><img src="dist/img/stage-logo.png"></div>
+        <div class="nav">
+            <a href="tel:023-86113333"><i class="icon icon-tel"></i></a>
+            <a href="javascript:;"><i class="icon icon-wx"></i></a>
+        </div>
+    </div>
+    <!--content-->
+    <div class="content">
+        <!--全景内容-->
+        <div id="view">
+            <noscript>
+                <table class="view-error">
+                    <tr style="vertical-align:middle;">
+                        <td>
+                            <div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div>
+                        </td>
+                    </tr>
+                </table>
+            </noscript>
+        </div>
+        <!--户型鉴赏-->
+        <div class="building-box">
+            <div class="build-bg">
+                <div class="build-cont">
+                    <div class="tab-nav">
+                        <a class="active" href="#ds">叠墅</a>
+                        <a href="#yf">洋房</a>
+                        <a href="#gc">高层</a>
+                    </div>
+                    <div class="tab-cont">
+                        <div class="item active" id="ds">
+                            <div class="menu-left">
+                                <a class="active" href="#">A户型</a>
+                                <a href="#">B户型</a>
+                                <a href="#">C户型</a>
+                                <a href="#">D户型</a>
+                            </div>
+                            <div class="cont">
+                                <label class="build-hxt"></label>
+                                <label class="build-img"><img src="dist/img/building-bs-yf.png"></label>
+                            </div>
+                        </div>
+                        <div class="item" id="yf">
+                            <div class="menu-left">
+                                <a class="active" href="#">A户型</a>
+                                <a href="#">B户型</a>
+                                <a href="#">C户型</a>
+                                <a href="#">D户型</a>
+                            </div>
+                            <div class="cont">
+                                <label class="build-hxt"></label>
+                                <label class="build-img"><img src="dist/img/building-bs-yf.png"></label>
+                            </div>
+                        </div>
+                        <div class="item" id="gc">
+                            <div class="menu-left"></div>
+                            <div class="cont"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="build-intro">
+                <a class="back-btn">返回</a>
+                <label><img src="dist/img/gc1-intro.png"></label>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <div class="footer">
+        <ul>
+            <!--<li>-->
+                <!--<a href="javascript:;" class="active">-->
+                    <!--<i class="icon icon-f1"></i>-->
+                    <!--<span>全景鸟瞰</span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <li>
+                <a href="javascript:;">
+                    <i class="icon icon-f2"></i>
+                    <span>户型鉴赏</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" class="active">
+                    <i class="icon icon-f3"></i>
+                    <span>园林漫游</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="icon icon-f4"></i>
+                    <span>样板间</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="house-type">
+        <a href="javascript:;">B3户型</a>
+    </div>
+
+    <!--ewm提示框-->
+    <div class="pop-box pop-ewm-box">
+        <div class="pop-cont">
+            <label class="pop-ewm"><img src="dist/img/ewm.jpg"></label>
+        </div>
+    </div>
+    <!--intro提示框-->
+    <div class="pop-box pop-intro-box">
+        <div class="pop-cont">
+            <img src="dist/img/intro-img.jpg">
+        </div>
+    </div>
+    <!--样板间-->
+    <div class="pop-box pop-alert-box">
+        <div class="pop-cont">
+            <label>
+                <span>该功能正在开发中，敬请期待。</span>
+                <a class="sure-btn" href="javascript:;">确定</a>
+            </label>
+        </div>
+    </div>
+</div>
+
+<script src="dist/jquery-1.11.1.min.js"></script>
+<script src="dist/buildData.js"></script>
+<script src="tour.js"></script>
+<script src="dist/index.js"></script>
+<script>
+    var krpanoReady = function (krpano) {
+        //krpano.call("loadingpercent_startloading()");
+    };
+    embedpano({
+        swf: "tour.swf",
+        xml: "tour.xml",
+        target: "view",
+        html5: "auto",
+        mobilescale: 1.0,
+        passQueryParameters: true,
+        consolelog: true
+    });
+</script>
+</body>
+</html>

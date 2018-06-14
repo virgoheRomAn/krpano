@@ -1,0 +1,190 @@
+﻿<krpano version="1.19" title="敬澜山">
+    <!--引用不同皮肤-->
+    <include url="skin/vtourskin.xml"/>
+    <include url="loadingbar.xml?q=111"/>
+
+
+    <!-- 开始加载第一个场景 -->
+    <action name="startup" autorun="onstart">
+        if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+        loadscene(scene_2, null, MERGE);
+        if(startactions !== null, startactions() );
+    </action>
+
+    <scene name="scene_1" title="鸟瞰图" onstart="" thumburl="panos/6.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/6.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/6.tiles/pano_%s.jpg"/>
+        </image>
+    </scene>
+
+    <scene name="scene_2" title="小区主入口" onstart="set(layer[map_btn].visible,false); set(layer[thumb_btn].visible,false); set(layer[map_btn_control].visible,false);skin_showmap(false);
+        skin_showthumbs(false); set(layer[thumb_btn].crop,1000|100|100|100);" thumburl="panos/2.tiles/thumb.jpg" lat="" lng=""
+           heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/2.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/2.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="scene_spot_1" style="skin_hotspotstyle" ath="-80" atv="10" linkedscene="scene_3" text="墅区景观"/>
+        <hotspot name="scene_spot_2" style="skin_hotspotstyle" ath="0" atv="10" linkedscene="scene_5" text="洋楼区景观"/>
+    </scene>
+
+    <scene name="scene_3" title="墅区景观" onstart="" thumburl="panos/3.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/3.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/3.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="scene_spot_3" style="skin_hotspotstyle" ath="30" atv="15" linkedscene="scene_2" text="小区主入口"/>
+        <hotspot name="scene_spot_4" style="skin_hotspotstyle" ath="-120" atv="0" linkedscene="scene_4" text="平墅区景观"/>
+    </scene>
+
+    <scene name="scene_4" title="平墅区景观" onstart="" thumburl="panos/4.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/4.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/4.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="scene_spot_5" style="skin_hotspotstyle" ath="108" atv="8" linkedscene="scene_3" text="墅区景观"/>
+    </scene>
+
+    <scene name="scene_5" title="洋楼区景观" onstart="" thumburl="panos/5.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/5.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/5.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="scene_spot_6" style="skin_hotspotstyle" ath="-90" atv="10" linkedscene="scene_2" text="小区主入口"/>
+    </scene>
+    <!-- <scene name="scene_7" title="叠墅花园" onstart="" showthumb="true" group="园林漫游" havevrimage="true" thumburl="panos/OutPic_05.tiles/thumb.jpg" lat="" lng="" heading="">
+         <view hlookat="145.0" vlookat="15.0" fovtype="MFOV" fov="100" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+         <preview url="panos/OutPic_05.tiles/preview.jpg" />
+         <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+             <level tiledimagewidth="1792" tiledimageheight="1792">
+                 <cube url="panos/OutPic_05.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+             </level>
+             <level tiledimagewidth="1024" tiledimageheight="1024">
+                 <cube url="panos/OutPic_05.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+             </level>
+         </image>
+         <image if="webvr.isenabled">
+             <cube url="panos/OutPic_05.tiles/vr/pano_%s.jpg" />
+         </image>
+         <hotspot name="scene_spot9" style="skin_hotspotstyle" ath="145" atv="15" linkedscene="scene_5" text="观景长廊"/>
+         <hotspot name="scene_spot10" style="skin_hotspotstyle" ath="-40" atv="0" linkedscene="scene_8" text="后门入口"/>
+     </scene>
+
+     <scene name="scene_8" title="后门入口" onstart="" showthumb="true" group="园林漫游" havevrimage="true" thumburl="panos/OutPic_06.tiles/thumb.jpg" lat="" lng="" heading="">
+         <view hlookat="65.0" vlookat="0.0" fovtype="MFOV" fov="100" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+         <preview url="panos/OutPic_06.tiles/preview.jpg" />
+         <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+             <level tiledimagewidth="1792" tiledimageheight="1792">
+                 <cube url="panos/OutPic_06.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+             </level>
+             <level tiledimagewidth="1024" tiledimageheight="1024">
+                 <cube url="panos/OutPic_06.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+             </level>
+         </image>
+         <image if="webvr.isenabled">
+             <cube url="panos/OutPic_06.tiles/vr/pano_%s.jpg" />
+         </image>
+         <hotspot name="scene_spot11" style="skin_hotspotstyle" ath="-115" atv="5" linkedscene="scene_6" text="洋房花园"/>
+         <hotspot name="scene_spot12" style="skin_hotspotstyle" ath="65" atv="2" linkedscene="scene_7" text="叠墅花园"/>
+     </scene>-->
+
+    <scene name="scene_home_1" title="客厅" onstart="add_new_thumb()" changeTitle="true" group="敬澜山·样板间·B3户型"
+           showthumb="false" havevrimage="true" thumburl="panos/home_1.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="90.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/home_1.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/home_1.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="home_sport1" style="skin_hotspotstyle" ath="-70" atv="0" linkedscene="scene_home_2" text="餐厅"/>
+    </scene>
+
+    <scene name="scene_home_2" title="餐厅" onstart="update_map_img()" changeTitle="true" group="敬澜山·样板间·B3户型"
+           showthumb="false" havevrimage="true" thumburl="panos/home_2.tiles/thumb.jpg" lat="" lng=""
+           heading="">
+        <view hlookat="-160.0" vlookat="30.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/home_2.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/home_2.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="home_sport2" style="skin_hotspotstyle" ath="110" atv="10" linkedscene="scene_home_1" text="客厅"/>
+        <hotspot name="home_sport3" style="skin_hotspotstyle" ath="-152" atv="-5" linkedscene="scene_home_3" text="书房"/>
+        <hotspot name="home_sport4" style="skin_hotspotstyle" ath="-170" atv="-5" linkedscene="scene_home_4" text="楼道"/>
+    </scene>
+
+    <scene name="scene_home_3" title="书房" onstart="update_map_img()" changeTitle="true" group="敬澜山·样板间·B3户型"
+           havevrimage="true" thumburl="panos/home_3.tiles/thumb.jpg" lat="" lng=""
+           heading="">
+        <view hlookat="160.0" vlookat="10.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/home_3.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/home_3.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="home_sport5" style="skin_hotspotstyle" ath="40" atv="10" linkedscene="scene_home_2" text="餐厅"/>
+    </scene>
+
+    <scene name="scene_home_4" title="楼道" onstart="update_map_img()" changeTitle="true" group="敬澜山·样板间·B3户型"
+           havevrimage="true" thumburl="panos/home_4.tiles/thumb.jpg" lat="" lng=""
+           heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/home_4.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/home_4.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="home_sport6" style="skin_hotspotstyle" ath="-22" atv="-10" linkedscene="scene_home_5"
+                 text="卧室1"/>
+        <hotspot name="home_sport7" style="skin_hotspotstyle" ath="20" atv="-10" linkedscene="scene_home_6" text="卧室3"/>
+        <hotspot name="home_sport8" style="skin_hotspotstyle" ath="-5" atv="-10" linkedscene="scene_home_7" text="卧室2"/>
+        <hotspot name="home_sport9" style="skin_hotspotstyle" ath="-15" atv="40" linkedscene="scene_home_2" text="餐厅"/>
+    </scene>
+
+    <scene name="scene_home_5" title="卧室1" onstart="update_map_img()" changeTitle="true" group="敬澜山·样板间·B3户型"
+           havevrimage="true" thumburl="panos/home_5.tiles/thumb.jpg" lat="" lng=""
+           heading="">
+        <view hlookat="-120.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/home_5.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/home_5.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="home_sport10" style="skin_hotspotstyle" ath="30" atv="0" linkedscene="scene_home_4" text="楼道"/>
+    </scene>
+
+    <scene name="scene_home_6" title="卧室3" onstart="update_map_img()" changeTitle="true" group="敬澜山·样板间·B3户型"
+           havevrimage="true" thumburl="panos/home_6.tiles/thumb.jpg" lat="" lng=""
+           heading="">
+        <view hlookat="60.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/home_6.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/home_6.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="home_sport12" style="skin_hotspotstyle" ath="-110" atv="0" linkedscene="scene_home_4" text="楼道"/>
+    </scene>
+
+    <scene name="scene_home_7" title="卧室2" onstart="update_map_img()" changeTitle="true" group="敬澜山·样板间·B3户型"
+           havevrimage="true" thumburl="panos/home_7.tiles/thumb.jpg" lat="" lng=""
+           heading="">
+        <view hlookat="90.0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140"
+              limitview="auto"/>
+        <preview url="panos/home_7.tiles/preview.jpg"/>
+        <image>
+            <cube url="panos/home_7.tiles/pano_%s.jpg"/>
+        </image>
+        <hotspot name="home_sport11" style="skin_hotspotstyle" ath="-150" atv="0" linkedscene="scene_home_4" text="楼道"/>
+    </scene>
+</krpano>
